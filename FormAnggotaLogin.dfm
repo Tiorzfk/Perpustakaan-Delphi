@@ -1,6 +1,6 @@
 object Form_Anggota_Login: TForm_Anggota_Login
-  Left = 211
-  Top = 158
+  Left = 391
+  Top = 0
   Width = 616
   Height = 481
   Caption = 'LoginAnggota'

@@ -55,7 +55,7 @@ begin
           else
             begin
               ShowMessage('Selamat datang di Perpustakaan Online');
-              Menu_Pegawai.Show;
+              MenuPegawai.Show;
               Form_Pegawai.Hide;
             end;
       end;

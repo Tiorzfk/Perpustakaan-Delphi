@@ -15,7 +15,7 @@ object Data_Anggota: TData_Anggota
   PixelsPerInch = 96
   TextHeight = 13
   object lb_databuku: TLabel
-    Left = 224
+    Left = 248
     Top = 8
     Width = 201
     Height = 29

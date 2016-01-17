@@ -21,6 +21,8 @@ type
     Image2: TImage;
     Button3: TButton;
     procedure Button1Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -32,13 +34,23 @@ var
 
 implementation
 
-uses Menu;
+uses Menu, Menu_Utama;
 
 {$R *.dfm}
 
 procedure TMenuAnggota.Button1Click(Sender: TObject);
 begin
 Menu_Pengunjung.show;
+end;
+
+procedure TMenuAnggota.FormCreate(Sender: TObject);
+begin
+MenuUtama.Hide;
+end;
+
+procedure TMenuAnggota.Button2Click(Sender: TObject);
+begin
+Peminjaman_Buku.Show;
 end;
 
 end.

@@ -51,7 +51,7 @@ begin
         ExecSQL;
         ShowMessage('Berhasil..');
         Form_Pengunjung.hide;
-        MenuUtama.hide;
+  
         Menu_Pengunjung.show;
     end;
 end;

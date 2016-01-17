@@ -1,8 +1,8 @@
 object Data_Buku: TData_Buku
-  Left = -8
-  Top = -8
-  Width = 1382
-  Height = 744
+  Left = 175
+  Top = 87
+  Width = 1008
+  Height = 454
   Caption = 'DataBuku'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET

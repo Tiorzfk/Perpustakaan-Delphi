@@ -38,7 +38,7 @@ var
 
 implementation
 
-uses FormPengunjung, FormAnggota;
+uses FormPengunjung, FormAnggota, FormPegawai;
 
 {$R *.dfm}
 

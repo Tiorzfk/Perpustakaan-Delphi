@@ -1,8 +1,8 @@
 object DataModule1: TDataModule1
-  OldCreateOrder = False
+  OldCreateOrder = True
   Left = 277
   Top = 207
-  Height = 387
+  Height = 434
   Width = 334
   object koneksilogin: TADOConnection
     Connected = True
@@ -48,7 +48,7 @@ object DataModule1: TDataModule1
     Connection = koneksilogin
     Parameters = <>
     Left = 80
-    Top = 240
+    Top = 248
   end
   object DataSourceAnggota: TDataSource
     DataSet = qryanggota

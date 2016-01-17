@@ -1512,6 +1512,7 @@ object MenuAnggota: TMenuAnggota
       Height = 33
       Caption = 'Pinjam Buku'
       TabOrder = 2
+      OnClick = Button2Click
     end
     object Button3: TButton
       Left = 408

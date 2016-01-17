@@ -28,7 +28,7 @@ var
 
 implementation
 
-uses Koneksi;
+uses Koneksi, Menu_Pegawai;
 
 {$R *.dfm}
 

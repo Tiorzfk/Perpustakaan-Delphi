@@ -7,7 +7,7 @@ uses
   Dialogs, StdCtrls, jpeg, ExtCtrls;
 
 type
-  TForm1 = class(TForm)
+  TMenuPegawai = class(TForm)
     Panel_login: TPanel;
     Label3: TLabel;
     Image2: TImage;
@@ -26,18 +26,20 @@ type
   end;
 
 var
-  Form1: TForm1;
+  MenuPegawai: TMenuPegawai;
 
 implementation
 
+uses DataBuku, DataAnggota;
+
 {$R *.dfm}
 
-procedure TForm1.Button1Click(Sender: TObject);
+procedure TMenuPegawai.Button1Click(Sender: TObject);
 begin
 Data_Buku.show;
 end;
 
-procedure TForm1.Button2Click(Sender: TObject);
+procedure TMenuPegawai.Button2Click(Sender: TObject);
 begin
 Data_Anggota.show;
 end;

@@ -2,7 +2,7 @@ object Form_Pengunjung: TForm_Pengunjung
   Left = 192
   Top = 125
   Width = 613
-  Height = 480
+  Height = 489
   Caption = 'FormPengunjung'
   Color = clTeal
   Font.Charset = DEFAULT_CHARSET

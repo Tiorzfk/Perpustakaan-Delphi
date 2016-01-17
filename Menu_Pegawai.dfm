@@ -1,9 +1,9 @@
-object Form1: TForm1
+object MenuPegawai: TMenuPegawai
   Left = 192
   Top = 125
   Width = 655
   Height = 378
-  Caption = 'Form1'
+  Caption = 'MenuPegawai'
   Color = clTeal
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText

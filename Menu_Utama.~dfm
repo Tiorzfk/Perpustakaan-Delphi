@@ -1,6 +1,6 @@
 object MenuUtama: TMenuUtama
-  Left = 192
-  Top = 125
+  Left = 199
+  Top = 135
   Width = 928
   Height = 480
   Caption = 'MenuUtama'
@@ -14,7 +14,7 @@ object MenuUtama: TMenuUtama
   PixelsPerInch = 96
   TextHeight = 13
   object Panel_login: TPanel
-    Left = 264
+    Left = 256
     Top = 0
     Width = 633
     Height = 281
@@ -2781,7 +2781,7 @@ object MenuUtama: TMenuUtama
     end
   end
   object Panel2: TPanel
-    Left = 264
+    Left = 256
     Top = 256
     Width = 633
     Height = 185
