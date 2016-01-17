@@ -1,0 +1,50 @@
+unit FormPinjamBuku;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, XPMan, StdCtrls, Mask, DBCtrls, Grids, DBGrids;
+
+type
+  TPinjam_Buku = class(TForm)
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    DBGrid1: TDBGrid;
+    DBEdit1: TDBEdit;
+    DBEdit2: TDBEdit;
+    DBEdit3: TDBEdit;
+    DBEdit4: TDBEdit;
+    DBEdit5: TDBEdit;
+    DBEdit6: TDBEdit;
+    DBEdit7: TDBEdit;
+    GroupBox1: TGroupBox;
+    Button1: TButton;
+    Button2: TButton;
+    Button3: TButton;
+    Button4: TButton;
+    Button5: TButton;
+    Button6: TButton;
+    GroupBox2: TGroupBox;
+    Edit1: TEdit;
+    Button7: TButton;
+    XPManifest1: TXPManifest;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Pinjam_Buku: TPinjam_Buku;
+
+implementation
+
+{$R *.dfm}
+
+end.
