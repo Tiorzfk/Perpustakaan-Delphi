@@ -11,16 +11,14 @@ object Peminjaman_Buku: TPeminjaman_Buku
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
-  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Label2: TLabel
     Left = 8
     Top = 16
-    Width = 63
+    Width = 84
     Height = 13
-    Caption = 'Id Anggota'
-    FocusControl = Edit_id
+    Caption = 'Nama Anggota'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -30,11 +28,10 @@ object Peminjaman_Buku: TPeminjaman_Buku
   end
   object Label3: TLabel
     Left = 8
-    Top = 48
-    Width = 45
+    Top = 56
+    Width = 66
     Height = 13
-    Caption = 'Id Buku'
-    FocusControl = Edit_IdBuku
+    Caption = 'Nama Buku'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -44,24 +41,10 @@ object Peminjaman_Buku: TPeminjaman_Buku
   end
   object Label4: TLabel
     Left = 8
-    Top = 80
+    Top = 96
     Width = 88
     Height = 13
     Caption = 'Tanggal Pinjam'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'MS Sans Serif'
-    Font.Style = [fsBold]
-    ParentFont = False
-  end
-  object Label5: TLabel
-    Left = 8
-    Top = 112
-    Width = 81
-    Height = 13
-    Caption = 'Jumlah Pinjam'
-    FocusControl = Edit_jmlpinjam
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -89,6 +72,7 @@ object Peminjaman_Buku: TPeminjaman_Buku
       Height = 25
       Caption = 'Pinjam'
       TabOrder = 0
+      OnClick = Button4Click
     end
     object Button5: TButton
       Left = 96
@@ -128,47 +112,24 @@ object Peminjaman_Buku: TPeminjaman_Buku
       TabOrder = 1
     end
   end
-  object Edit_id: TDBEdit
+  object dt: TDateTimePicker
     Left = 144
-    Top = 16
-    Width = 95
-    Height = 21
-    DataField = 'No_Anggota'
-    TabOrder = 2
-  end
-  object Edit_IdBuku: TDBEdit
-    Left = 144
-    Top = 48
-    Width = 97
-    Height = 21
-    DataField = 'Kode_Buku'
-    TabOrder = 3
-  end
-  object Edit_jmlpinjam: TDBEdit
-    Left = 144
-    Top = 112
-    Width = 97
-    Height = 21
-    DataField = 'Jumlah_Pinjam'
-    TabOrder = 4
-  end
-  object DateTimePicker1: TDateTimePicker
-    Left = 144
-    Top = 80
+    Top = 96
     Width = 97
     Height = 21
     Date = 40276.000000000000000000
     Format = 'dd/MM/yyyy'
     Time = 40276.000000000000000000
-    TabOrder = 5
+    TabOrder = 2
   end
   object DBGrid1: TDBGrid
     Left = 0
-    Top = 168
+    Top = 176
     Width = 753
     Height = 193
     DataSource = DataSourcePeminjaman
-    TabOrder = 6
+    ReadOnly = True
+    TabOrder = 3
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
@@ -217,21 +178,51 @@ object Peminjaman_Buku: TPeminjaman_Buku
         Visible = True
       end>
   end
-  object cb_judulbuku: TComboBox
-    Left = 248
-    Top = 48
-    Width = 145
+  object DBEdit1: TDBEdit
+    Left = 136
+    Top = 16
+    Width = 121
     Height = 21
-    ItemHeight = 13
-    TabOrder = 7
+    DataField = 'id_anggota'
+    DataSource = DataSource2
+    TabOrder = 4
   end
-  object cb_nama: TComboBox
-    Left = 248
+  object DBLookupComboBox1: TDBLookupComboBox
+    Left = 280
     Top = 16
     Width = 145
     Height = 21
-    ItemHeight = 13
-    TabOrder = 8
+    BiDiMode = bdLeftToRight
+    DataField = 'nama'
+    DataSource = DataSource3
+    KeyField = 'nama'
+    ListField = 'nama'
+    ListSource = DataSource2
+    ParentBiDiMode = False
+    ParentShowHint = False
+    ShowHint = False
+    TabOrder = 5
+  end
+  object DBEdit2: TDBEdit
+    Left = 136
+    Top = 56
+    Width = 121
+    Height = 21
+    DataField = 'id_buku'
+    DataSource = DataSource1
+    TabOrder = 6
+  end
+  object DBLookupComboBox2: TDBLookupComboBox
+    Left = 280
+    Top = 56
+    Width = 145
+    Height = 21
+    DataField = 'judul'
+    DataSource = DataSource3
+    KeyField = 'judul'
+    ListField = 'judul'
+    ListSource = DataSource1
+    TabOrder = 7
   end
   object DataSourcePeminjaman: TDataSource
     DataSet = qrypeminjaman
@@ -243,6 +234,7 @@ object Peminjaman_Buku: TPeminjaman_Buku
     ConnectionString = 
       'Provider=MSDASQL.1;Persist Security Info=False;Data Source=Perpu' +
       'stakaan;Initial Catalog=db_perpustakaan;'
+    Mode = cmWrite
     Left = 328
     Top = 208
   end
@@ -275,7 +267,13 @@ object Peminjaman_Buku: TPeminjaman_Buku
     Left = 312
     Top = 280
   end
-  object qrynama: TADOQuery
+  object DataSource2: TDataSource
+    DataSet = ADOQuery1
+    OnStateChange = Button4Click
+    Left = 344
+    Top = 312
+  end
+  object ADOQuery1: TADOQuery
     Active = True
     Connection = koneksi
     CursorType = ctStatic
@@ -285,9 +283,24 @@ object Peminjaman_Buku: TPeminjaman_Buku
     Left = 312
     Top = 312
   end
-  object DataSource2: TDataSource
-    DataSet = qrynama
-    Left = 344
-    Top = 312
+  object ADOQuery2: TADOQuery
+    Active = True
+    Connection = koneksi
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      
+        'SELECT id_peminjam,penerbit,pengarang,tb_anggota.nama,tb_buku.ju' +
+        'dul,tgl_pinjam,tgl_kembali from tb_peminjaman left join tb_anggo' +
+        'ta on tb_peminjaman.id_anggota=tb_anggota.id_anggota left join t' +
+        'b_buku on tb_peminjaman.id_buku=tb_buku.id_buku'
+      '')
+    Left = 424
+    Top = 248
+  end
+  object DataSource3: TDataSource
+    DataSet = ADOQuery2
+    Left = 392
+    Top = 248
   end
 end

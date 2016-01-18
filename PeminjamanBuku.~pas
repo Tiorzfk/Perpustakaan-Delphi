@@ -11,28 +11,28 @@ type
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
-    Label5: TLabel;
     GroupBox1: TGroupBox;
     Button4: TButton;
     Button5: TButton;
     GroupBox2: TGroupBox;
     Edit1: TEdit;
     Button7: TButton;
-    Edit_id: TDBEdit;
-    Edit_IdBuku: TDBEdit;
-    Edit_jmlpinjam: TDBEdit;
-    DateTimePicker1: TDateTimePicker;
+    dt: TDateTimePicker;
     DBGrid1: TDBGrid;
     DataSourcePeminjaman: TDataSource;
     koneksi: TADOConnection;
     qrypeminjaman: TADOQuery;
     DataSource1: TDataSource;
     qryjudul: TADOQuery;
-    cb_judulbuku: TComboBox;
-    qrynama: TADOQuery;
     DataSource2: TDataSource;
-    cb_nama: TComboBox;
-    procedure FormCreate(Sender: TObject);
+    DBEdit1: TDBEdit;
+    ADOQuery1: TADOQuery;
+    DBLookupComboBox1: TDBLookupComboBox;
+    ADOQuery2: TADOQuery;
+    DataSource3: TDataSource;
+    DBEdit2: TDBEdit;
+    DBLookupComboBox2: TDBLookupComboBox;
+    procedure Button4Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -46,19 +46,18 @@ implementation
 
 {$R *.dfm}
 
-procedure TPeminjaman_Buku.FormCreate(Sender: TObject);
+procedure TPeminjaman_Buku.Button4Click(Sender: TObject);
 begin
-cb_judulbuku.Items.Clear;
-while not qryjudul.Eof do
-  begin
-    cb_judulbuku.Items.Add(qryjudul.fieldbyname('judul').AsString);
-    qryjudul.Next;
-  end;
-cb_nama.Items.Clear;
-while not qrynama.Eof do
-  begin
-    cb_nama.Items.Add(qrynama.fieldbyname('nama').AsString);
-    qrynama.Next;
-  end;
+{
+  with qrypeminjaman do
+    begin
+        close;
+        sql.Clear;
+        sql.Add('insert into tb_peminjaman(id_anggota,id_buku,tgl_pinjam,tgl_kembali)values("'+cb_nama.select+'","'+cb_judulbuku.Text+'","'+dt.Text+'") ');
+        ExecSQL;
+        ShowMessage('Berhasil');
+    end;
+}
 end;
+
 end.
