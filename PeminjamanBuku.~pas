@@ -12,7 +12,6 @@ type
     Label3: TLabel;
     Label4: TLabel;
     GroupBox1: TGroupBox;
-    Button4: TButton;
     Button5: TButton;
     GroupBox2: TGroupBox;
     Edit1: TEdit;
@@ -25,14 +24,15 @@ type
     DataSource1: TDataSource;
     qryjudul: TADOQuery;
     DataSource2: TDataSource;
-    DBEdit1: TDBEdit;
+    id_anggota: TDBEdit;
     ADOQuery1: TADOQuery;
     DBLookupComboBox1: TDBLookupComboBox;
     ADOQuery2: TADOQuery;
     DataSource3: TDataSource;
-    DBEdit2: TDBEdit;
+    id_buku: TDBEdit;
     DBLookupComboBox2: TDBLookupComboBox;
-    procedure Button4Click(Sender: TObject);
+    Button1: TButton;
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -46,18 +46,21 @@ implementation
 
 {$R *.dfm}
 
-procedure TPeminjaman_Buku.Button4Click(Sender: TObject);
+procedure TPeminjaman_Buku.Button1Click(Sender: TObject);
+var
+  tgl_harus_kembali,tgl_pinjam:TDate;
 begin
-{
+  tgl_pinjam:=dt.date;
+  tgl_harus_kembali:=EncodeDate(tgl_pinjam)+3;
+
   with qrypeminjaman do
     begin
         close;
         sql.Clear;
-        sql.Add('insert into tb_peminjaman(id_anggota,id_buku,tgl_pinjam,tgl_kembali)values("'+cb_nama.select+'","'+cb_judulbuku.Text+'","'+dt.Text+'") ');
+        sql.Add('insert into tb_peminjaman(id_anggota,id_buku,tgl_pinjam,tgl_kembali)values("'+id_anggota.text+'","'+id_buku.text+'","'+DateToStr(tgl_pinjam)+'","'+DateToStr(tgl_harus_kembali)+'") ');
         ExecSQL;
         ShowMessage('Berhasil');
     end;
-}
 end;
 
 end.

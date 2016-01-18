@@ -65,22 +65,13 @@ object Peminjaman_Buku: TPeminjaman_Buku
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
-    object Button4: TButton
-      Left = 8
-      Top = 32
-      Width = 75
-      Height = 25
-      Caption = 'Pinjam'
-      TabOrder = 0
-      OnClick = Button4Click
-    end
     object Button5: TButton
       Left = 96
       Top = 32
       Width = 75
       Height = 25
       Caption = 'Hapus'
-      TabOrder = 1
+      TabOrder = 0
     end
   end
   object GroupBox2: TGroupBox
@@ -113,7 +104,7 @@ object Peminjaman_Buku: TPeminjaman_Buku
     end
   end
   object dt: TDateTimePicker
-    Left = 144
+    Left = 136
     Top = 96
     Width = 97
     Height = 21
@@ -128,7 +119,6 @@ object Peminjaman_Buku: TPeminjaman_Buku
     Width = 753
     Height = 193
     DataSource = DataSourcePeminjaman
-    ReadOnly = True
     TabOrder = 3
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -139,46 +129,53 @@ object Peminjaman_Buku: TPeminjaman_Buku
       item
         Expanded = False
         FieldName = 'id_peminjam'
+        Title.Caption = 'Id peminjam'
         Width = 62
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'nama'
+        Title.Caption = 'Nama'
         Width = 100
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'judul'
+        Title.Caption = 'Judul'
         Width = 100
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'pengarang'
+        Title.Caption = 'Pengarang'
         Width = 130
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'penerbit'
+        Title.Caption = 'Penerbit'
         Width = 150
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'tgl_pinjam'
+        Title.Caption = 'Tgl. pinjam'
         Width = 100
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'tgl_kembali'
+        Title.Caption = 'Tgl. Harus kembali'
         Visible = True
       end>
   end
-  object DBEdit1: TDBEdit
+  object id_anggota: TDBEdit
     Left = 136
     Top = 16
     Width = 121
@@ -203,7 +200,7 @@ object Peminjaman_Buku: TPeminjaman_Buku
     ShowHint = False
     TabOrder = 5
   end
-  object DBEdit2: TDBEdit
+  object id_buku: TDBEdit
     Left = 136
     Top = 56
     Width = 121
@@ -223,6 +220,15 @@ object Peminjaman_Buku: TPeminjaman_Buku
     ListField = 'judul'
     ListSource = DataSource1
     TabOrder = 7
+  end
+  object Button1: TButton
+    Left = 544
+    Top = 40
+    Width = 75
+    Height = 25
+    Caption = 'Pinjam'
+    TabOrder = 8
+    OnClick = Button1Click
   end
   object DataSourcePeminjaman: TDataSource
     DataSet = qrypeminjaman
@@ -269,7 +275,6 @@ object Peminjaman_Buku: TPeminjaman_Buku
   end
   object DataSource2: TDataSource
     DataSet = ADOQuery1
-    OnStateChange = Button4Click
     Left = 344
     Top = 312
   end
