@@ -1,6 +1,6 @@
 object Peminjaman_Buku: TPeminjaman_Buku
-  Left = 281
-  Top = 192
+  Left = 370
+  Top = 246
   Width = 781
   Height = 430
   Caption = 'Peminjaman_Buku'
@@ -245,7 +245,6 @@ object Peminjaman_Buku: TPeminjaman_Buku
     Top = 208
   end
   object qrypeminjaman: TADOQuery
-    Active = True
     Connection = koneksi
     CursorType = ctStatic
     Parameters = <>
@@ -264,7 +263,6 @@ object Peminjaman_Buku: TPeminjaman_Buku
     Top = 280
   end
   object qryjudul: TADOQuery
-    Active = True
     Connection = koneksi
     CursorType = ctStatic
     Parameters = <>

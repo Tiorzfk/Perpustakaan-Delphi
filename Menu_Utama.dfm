@@ -1,8 +1,8 @@
 object MenuUtama: TMenuUtama
   Left = 175
-  Top = 133
-  Width = 928
-  Height = 480
+  Top = 125
+  Width = 937
+  Height = 545
   Caption = 'MenuUtama'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -14,8 +14,8 @@ object MenuUtama: TMenuUtama
   PixelsPerInch = 96
   TextHeight = 13
   object Panel_login: TPanel
-    Left = 256
-    Top = 0
+    Left = 272
+    Top = 8
     Width = 633
     Height = 281
     Color = clHighlight
@@ -1382,20 +1382,20 @@ object MenuUtama: TMenuUtama
     end
   end
   object Panel1: TPanel
-    Left = 8
-    Top = -32
+    Left = 16
+    Top = 8
     Width = 241
-    Height = 473
+    Height = 489
     BiDiMode = bdLeftToRight
     Color = clGreen
     ParentBiDiMode = False
     ParentBackground = True
     TabOrder = 1
     object Image6: TImage
-      Left = -8
-      Top = -24
+      Left = 0
+      Top = -8
       Width = 241
-      Height = 473
+      Height = 497
       Picture.Data = {
         0A544A504547496D6167656CAC0000FFD8FFE000104A46494600010100000100
         010000FFFE003B43524541544F523A2067642D6A7065672076312E3020287573
@@ -2781,10 +2781,10 @@ object MenuUtama: TMenuUtama
     end
   end
   object Panel2: TPanel
-    Left = 256
-    Top = 256
+    Left = 272
+    Top = 304
     Width = 633
-    Height = 185
+    Height = 193
     Color = clWhite
     TabOrder = 2
     object Image4: TImage

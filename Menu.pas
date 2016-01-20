@@ -31,12 +31,14 @@ type
   end;
 
   dt_buku = record
-    id_buku:integer;
-    ISBN:string;
-    judul: string;
-    kategori: string;
-    pengarang: string;
-    penerbit: string;
+    id_buku :string;
+    no_buku :string;
+    judul :string;
+    kategori :string;
+    pengarang :string;
+    penerbit :string;
+    kota_penerbit :string;
+    status :string;
   end;
   buku = array[1..20] of dt_buku;
 
@@ -68,12 +70,13 @@ if DataModule1.qrybuku.RecordCount<>0 then
     SG.RowCount:= DataModule1.qrybuku.RecordCount+1;
     for i:= 0 to DataModule1.qrybuku.RecordCount-1 do
       begin
-        bku[i+1].id_buku:=DataModule1.qrybuku.FieldByName('id_buku').AsInteger;
-        bku[i+1].ISBN:=DataModule1.qrybuku.FieldByName('ISBN').AsString;
-        bku[i+1].judul:=DataModule1.qrybuku.FieldByName('judul').AsString;
-        bku[i+1].kategori:=DataModule1.qrybuku.FieldByName('kategori').AsString;
-        bku[i+1].pengarang:=DataModule1.qrybuku.FieldByName('pengarang').AsString;
-        bku[i+1].penerbit:=DataModule1.qrybuku.FieldByName('penerbit').AsString;
+        bku[i+1].id_buku:=DataModule1.qrybuku.FieldByName('Id_buku').AsString;
+        bku[i+1].no_buku:=DataModule1.qrybuku.FieldByName('Nomor_Buku').AsString;
+        bku[i+1].judul:=DataModule1.qrybuku.FieldByName('Judul').AsString;
+        bku[i+1].kategori:=DataModule1.qrybuku.FieldByName('Kategori').AsString;
+        bku[i+1].pengarang:=DataModule1.qrybuku.FieldByName('Pengarang').AsString;
+        bku[i+1].penerbit:=DataModule1.qrybuku.FieldByName('Penerbit').AsString;
+        bku[i+1].kota_penerbit:=DataModule1.qrybuku.FieldByName('Kota_Terbit').AsString;
         DataModule1.qrybuku.Next;
       end;
   end;
@@ -84,12 +87,13 @@ begin
     for i:= 0 to DataModule1.qrybuku.RecordCount do
       begin
         SG.Cells[0,i+1]:=IntToStr(i+1)+'.';
-        SG.Cells[1,i+1]:=IntToStr(bku[i+1].id_buku);
-        SG.Cells[2,i+1]:=bku[i+1].ISBN;
+        SG.Cells[1,i+1]:=bku[i+1].id_buku;
+        SG.Cells[2,i+1]:=bku[i+1].no_buku;
         SG.Cells[3,i+1]:=bku[i+1].judul;
         SG.Cells[4,i+1]:=bku[i+1].kategori;
         SG.Cells[5,i+1]:=bku[i+1].pengarang;
         SG.Cells[6,i+1]:=bku[i+1].penerbit;
+        SG.Cells[6,i+1]:=bku[i+1].kota_penerbit;
       end;
 end;
 procedure TMenu_Pengunjung.aturkolom;
@@ -103,7 +107,7 @@ begin
     Options := [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect];
     Cells[0,0]:='No.';
     Cells[1,0]:='Id Buku';
-    Cells[2,0]:='ISBN';
+    Cells[2,0]:='Nomor Buku';
     Cells[3,0]:='Judul Buku';
     Cells[4,0]:='Kategori Buku';
     Cells[5,0]:='Pengarang';
@@ -141,7 +145,7 @@ begin
       begin
         if(bku[i].judul = EditSearch.Text) then
           ketemu := true
-        else if(bku[i].kategori = EditSearch.Text) then
+        else if(bku[i].id_buku = EditSearch.Text) then
           ketemu := true
         else
           i := i+1;
@@ -156,12 +160,13 @@ begin
           SG.Rows[h].Clear;
         end;
           SG.Cells[0,1]:=IntToStr(no);
-          SG.Cells[1,1]:=IntToStr(bku[i].id_buku);
-          SG.Cells[2,1]:=bku[i].ISBN;
+          SG.Cells[1,1]:=bku[i].id_buku;
+          SG.Cells[2,1]:=bku[i].no_buku;
           SG.Cells[3,1]:=bku[i].judul;
           SG.Cells[4,1]:=bku[i].kategori;
           SG.Cells[5,1]:=bku[i].pengarang;
           SG.Cells[6,1]:=bku[i].penerbit;
+          SG.Cells[6,1]:=bku[i].kota_penerbit;
           no:=no+1;
     end
   else if(EditSearch.Text='') then begin

@@ -1,6 +1,6 @@
 object Menu_Pengunjung: TMenu_Pengunjung
-  Left = 233
-  Top = 276
+  Left = 448
+  Top = 236
   Width = 696
   Height = 389
   Caption = 'Lihat Buku'
