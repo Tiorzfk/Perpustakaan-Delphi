@@ -1,6 +1,11 @@
 object Peminjaman_Buku: TPeminjaman_Buku
+<<<<<<< HEAD
   Left = 267
   Top = 173
+=======
+  Left = 370
+  Top = 246
+>>>>>>> e0b5451b143aba42ee12f0d2f20a807a2619fabc
   Width = 781
   Height = 430
   Caption = 'FormPeminjaman'
@@ -245,7 +250,6 @@ object Peminjaman_Buku: TPeminjaman_Buku
     Top = 208
   end
   object qrypeminjaman: TADOQuery
-    Active = True
     Connection = koneksi
     CursorType = ctStatic
     Parameters = <>
@@ -264,7 +268,6 @@ object Peminjaman_Buku: TPeminjaman_Buku
     Top = 280
   end
   object qryjudul: TADOQuery
-    Active = True
     Connection = koneksi
     CursorType = ctStatic
     Parameters = <>

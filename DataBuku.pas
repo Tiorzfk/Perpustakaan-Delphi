@@ -22,7 +22,6 @@ type
     lb_inputbuku: TLabel;
     btn_edit: TButton;
     Edit_judul: TEdit;
-    Edit_ISBN: TEdit;
     Edit_kategori: TEdit;
     Edit_pengarang: TEdit;
     Edit_penerbit: TEdit;
@@ -47,19 +46,20 @@ type
   end;
 
   dt_buku = record
-    id_buku:integer;
-    ISBN:string;
+    id_buku:string;
+    nom_buku:string;
     judul: string;
     kategori: string;
     pengarang: string;
     penerbit: string;
+    kota_penerbit: string;
   end;
   buku = array[1..20] of dt_buku;
-  
+
 var
   Data_Buku: TData_Buku;
   bku:buku;
-  
+
 implementation
 
 uses Koneksi;
@@ -85,12 +85,13 @@ if DataModule1.qrybuku.RecordCount<>0 then
     SG.RowCount:= DataModule1.qrybuku.RecordCount+1;
     for i:= 0 to DataModule1.qrybuku.RecordCount-1 do
       begin
-        bku[i+1].id_buku:=DataModule1.qrybuku.FieldByName('id_buku').AsInteger;
-        bku[i+1].ISBN:=DataModule1.qrybuku.FieldByName('ISBN').AsString;
-        bku[i+1].judul:=DataModule1.qrybuku.FieldByName('judul').AsString;
-        bku[i+1].kategori:=DataModule1.qrybuku.FieldByName('kategori').AsString;
-        bku[i+1].pengarang:=DataModule1.qrybuku.FieldByName('pengarang').AsString;
-        bku[i+1].penerbit:=DataModule1.qrybuku.FieldByName('penerbit').AsString;
+        bku[i+1].id_buku:=DataModule1.qrybuku.FieldByName('Id_buku').AsString;
+        bku[i+1].nom_buku:=DataModule1.qrybuku.FieldByName('Nomor_Buku').AsString;
+        bku[i+1].judul:=DataModule1.qrybuku.FieldByName('Judul').AsString;
+        bku[i+1].kategori:=DataModule1.qrybuku.FieldByName('Kategori').AsString;
+        bku[i+1].pengarang:=DataModule1.qrybuku.FieldByName('Pengarang').AsString;
+        bku[i+1].penerbit:=DataModule1.qrybuku.FieldByName('Penerbit').AsString;
+        bku[i+1].kota_penerbit:=DataModule1.qrybuku.FieldByName('Kota_Terbit').AsString;
         DataModule1.qrybuku.Next;
       end;
   end;
@@ -102,12 +103,13 @@ begin
     for i:= 0 to DataModule1.qrybuku.RecordCount do
       begin
         SG.Cells[0,i+1]:=IntToStr(i+1)+'.';
-        SG.Cells[1,i+1]:=IntToStr(bku[i+1].id_buku);
-        SG.Cells[2,i+1]:=bku[i+1].ISBN;
+        SG.Cells[1,i+1]:=bku[i+1].id_buku;
+        SG.Cells[2,i+1]:=bku[i+1].nom_buku;
         SG.Cells[3,i+1]:=bku[i+1].judul;
         SG.Cells[4,i+1]:=bku[i+1].kategori;
         SG.Cells[5,i+1]:=bku[i+1].pengarang;
         SG.Cells[6,i+1]:=bku[i+1].penerbit;
+        SG.Cells[6,i+1]:=bku[i+1].kota_penerbit;
       end;
 end;
 
@@ -122,7 +124,7 @@ begin
     Options := [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect];
     Cells[0,0]:='No.';
     Cells[1,0]:='Id Buku';
-    Cells[2,0]:='ISBN';
+    Cells[2,0]:='Nomor Buku';
     Cells[3,0]:='Judul Buku';
     Cells[4,0]:='Kategori Buku';
     Cells[5,0]:='Pengarang';
@@ -145,7 +147,6 @@ begin
   ambildata;
   data;
   showdata;
-  edit_ISBN.Hide;
   edit_judul.Hide;
   edit_kategori.Hide;
   edit_pengarang.Hide;
@@ -179,12 +180,13 @@ begin
           SG.Rows[h].Clear;
         end;
           SG.Cells[0,1]:=IntToStr(no);
-          SG.Cells[1,1]:=IntToStr(bku[i].id_buku);
-          SG.Cells[2,1]:=bku[i].ISBN;
+          SG.Cells[1,1]:=bku[i].id_buku;
+          SG.Cells[2,1]:=bku[i].nom_buku;
           SG.Cells[3,1]:=bku[i].judul;
           SG.Cells[4,1]:=bku[i].kategori;
           SG.Cells[5,1]:=bku[i].pengarang;
           SG.Cells[6,1]:=bku[i].penerbit;
+          SG.Cells[6,1]:=bku[i].kota_penerbit;
           no:=no+1;
     end
   else if(EditSearch.Text='') then begin
@@ -250,11 +252,12 @@ begin
   n:=StrToInt(jml_data.Text);
   for i:= 1 to n do
     begin
-      bku[i].judul:=InputBox('ISBN','Masukkan ISBN','');
+      bku[i].nom_buku:=InputBox('Nomor Buku','Masukkan No. Buku','');
       bku[i].judul:=InputBox('Judul Buku','Masukkan Judul Buku','');
       bku[i].kategori:=InputBox('Kategori Buku','Masukkan Kategori Buku','');
       bku[i].pengarang:=InputBox('Pengarang','Masukan Pengarang','');
       bku[i].penerbit:=InputBox('Penerbit','Masukan Penerbit','');
+      bku[i].kota_penerbit:=InputBox('Kota Terbit','Masukan Kota Terbit','');
       MemoBuku.Lines.append (inttostr(i)+'. Judul : '+bku[i].judul+', Pengarang : '+bku[i].pengarang+', Penerbit : '+bku[i].penerbit);
     end;
 end;
@@ -268,7 +271,7 @@ begin
       for i:=1 to n do begin
         close;
         sql.Clear;
-        sql.Add('insert into tb_buku(ISBN,judul,kategori,pengarang,penerbit)values("'+bku[i].ISBN+'","'+bku[i].judul+'","'+bku[i].kategori+'","'+bku[i].pengarang+'","'+bku[i].penerbit+'") ');
+        sql.Add('insert into tb_buku(Nomor_Buku,Judul,Kategori,Pengarang,Penerbit,Kota_Penerbit)values("'+bku[i].nom_buku+'","'+bku[i].judul+'","'+bku[i].kategori+'","'+bku[i].pengarang+'","'+bku[i].penerbit+'","'+bku[i].kota_penerbit+'") ');
         ExecSQL;
       end;
       ShowMessage('Tambah data berhasil..');
@@ -287,7 +290,6 @@ begin
   btn_edit.Caption := 'Simpan';
   if btn_edit.Caption = 'Simpan' then
     begin
-      edit_ISBN.show;
       edit_judul.show;
       edit_kategori.show;
       edit_pengarang.show;
@@ -298,7 +300,6 @@ end;
 
 procedure TData_Buku.btn_cancelClick(Sender: TObject);
 begin
-  edit_ISBN.Hide;
   edit_judul.Hide;
   edit_kategori.Hide;
   edit_pengarang.Hide;
