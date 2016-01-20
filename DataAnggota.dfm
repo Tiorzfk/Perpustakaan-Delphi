@@ -1,6 +1,6 @@
 object Data_Anggota: TData_Anggota
-  Left = 193
-  Top = 125
+  Left = 348
+  Top = 179
   Width = 723
   Height = 427
   Caption = 'DataAnggota'

@@ -1,6 +1,6 @@
 object Data_Buku: TData_Buku
-  Left = 175
-  Top = 87
+  Left = 174
+  Top = 141
   Width = 1008
   Height = 454
   Caption = 'DataBuku'

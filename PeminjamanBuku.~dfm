@@ -1,9 +1,9 @@
 object Peminjaman_Buku: TPeminjaman_Buku
-  Left = 281
-  Top = 192
+  Left = 267
+  Top = 173
   Width = 781
   Height = 430
-  Caption = 'Peminjaman_Buku'
+  Caption = 'd'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText

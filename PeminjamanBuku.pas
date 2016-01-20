@@ -51,16 +51,25 @@ var
   tgl_harus_kembali,tgl_pinjam:TDate;
 begin
   tgl_pinjam:=dt.date;
-  tgl_harus_kembali:=tgl_pinjam+3;
-
+  tgl_harus_kembali:=tgl_pinjam+7;
+ {
+  with qryjudul do
+    begin
+        close;
+        sql.Clear;
+        sql.Add('update tb_buku set status=1 where id_buku="'+id_buku.text+'"');
+        ExecSQL;
+    end;
+  }
   with qrypeminjaman do
     begin
         close;
         sql.Clear;
         sql.Add('insert into tb_peminjaman(id_anggota,id_buku,tgl_pinjam,tgl_kembali)values("'+id_anggota.text+'","'+id_buku.text+'","'+DateToStr(tgl_pinjam)+'","'+DateToStr(tgl_harus_kembali)+'") ');
         ExecSQL;
-        ShowMessage('Berhasil');
     end;
+
+    ShowMessage('Berhasil');
 end;
 
 end.

@@ -14,7 +14,8 @@ uses
   FormAnggotaLogin in 'FormAnggotaLogin.pas' {Form_Anggota_Login},
   FormPegawai in 'FormPegawai.pas' {Form_Pegawai},
   Menu_Pegawai in 'Menu_Pegawai.pas' {MenuPegawai},
-  PeminjamanBuku in 'PeminjamanBuku.pas' {Peminjaman_Buku};
+  PeminjamanBuku in 'PeminjamanBuku.pas' {Peminjaman_Buku},
+  PengembalianBuku in 'PengembalianBuku.pas' {FormPengembalian};
 
 {$R *.res}
 
@@ -22,5 +23,6 @@ begin
   Application.Initialize;
   Application.CreateForm(TDataModule1, DataModule1);
   Application.CreateForm(TPeminjaman_Buku, Peminjaman_Buku);
+  Application.CreateForm(TFormPengembalian, FormPengembalian);
   Application.Run;
 end.

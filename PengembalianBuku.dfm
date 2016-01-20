@@ -1,9 +1,9 @@
-object Peminjaman_Buku: TPeminjaman_Buku
-  Left = 267
-  Top = 173
-  Width = 781
-  Height = 430
-  Caption = 'FormPeminjaman'
+object FormPengembalian: TFormPengembalian
+  Left = 201
+  Top = 153
+  Width = 819
+  Height = 480
+  Caption = 'FormPengembalian'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -106,7 +106,7 @@ object Peminjaman_Buku: TPeminjaman_Buku
   object dt: TDateTimePicker
     Left = 136
     Top = 96
-    Width = 97
+    Width = 121
     Height = 21
     Date = 40276.000000000000000000
     Format = 'dd/MM/yyyy'
@@ -116,7 +116,7 @@ object Peminjaman_Buku: TPeminjaman_Buku
   object DBGrid1: TDBGrid
     Left = 0
     Top = 176
-    Width = 753
+    Width = 769
     Height = 193
     DataSource = DataSourcePeminjaman
     TabOrder = 3
@@ -128,7 +128,7 @@ object Peminjaman_Buku: TPeminjaman_Buku
     Columns = <
       item
         Expanded = False
-        FieldName = 'id_peminjam'
+        FieldName = 'id_kembali'
         Title.Caption = 'Id peminjam'
         Width = 62
         Visible = True
@@ -163,14 +163,14 @@ object Peminjaman_Buku: TPeminjaman_Buku
       end
       item
         Expanded = False
-        FieldName = 'tgl_pinjam'
+        FieldName = 'tgl_kembali'
         Title.Caption = 'Tgl. pinjam'
         Width = 100
         Visible = True
       end
       item
         Expanded = False
-        FieldName = 'tgl_kembali'
+        FieldName = 'tgl_harus_kembali'
         Title.Caption = 'Tgl. Harus kembali'
         Visible = True
       end>
@@ -226,12 +226,11 @@ object Peminjaman_Buku: TPeminjaman_Buku
     Top = 40
     Width = 75
     Height = 25
-    Caption = 'Pinjam'
+    Caption = 'Kembalikan'
     TabOrder = 8
-    OnClick = Button1Click
   end
   object DataSourcePeminjaman: TDataSource
-    DataSet = qrypeminjaman
+    DataSet = qrypengembalian
     Left = 344
     Top = 248
   end
@@ -244,17 +243,17 @@ object Peminjaman_Buku: TPeminjaman_Buku
     Left = 328
     Top = 208
   end
-  object qrypeminjaman: TADOQuery
+  object qrypengembalian: TADOQuery
     Active = True
     Connection = koneksi
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
       
-        'SELECT id_peminjam,penerbit,pengarang,tb_anggota.nama,tb_buku.ju' +
-        'dul,tgl_pinjam,tgl_kembali from tb_peminjaman left join tb_anggo' +
-        'ta on tb_peminjaman.id_anggota=tb_anggota.id_anggota left join t' +
-        'b_buku on tb_peminjaman.id_buku=tb_buku.id_buku')
+        'SELECT id_kembali,penerbit,pengarang,tb_anggota.nama,tb_buku.jud' +
+        'ul,tgl_harus_kembali,tgl_kembali from tb_pengembalian left join ' +
+        'tb_anggota on tb_pengembalian.id_anggota=tb_anggota.id_anggota l' +
+        'eft join tb_buku on tb_pengembalian.id_buku=tb_buku.id_buku')
     Left = 312
     Top = 248
   end
